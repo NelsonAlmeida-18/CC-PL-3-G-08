@@ -1,0 +1,85 @@
+\hypertarget{stack_8h}{}\doxysection{stack.\+h File Reference}
+\label{stack_8h}\index{stack.h@{stack.h}}
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structSTACK}{S\+T\+A\+CK}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{stack_8h_a70ed59adcb4159ac551058053e649640}{S\+I\+ZE}}~10240
+\item 
+\#define \mbox{\hyperlink{stack_8h_a6ef44be049ac3987c33cd3d80f6ee42e}{push}}(s,  val)~s.\+array\mbox{[}s.\+pos++\mbox{]} = val;
+\item 
+\#define \mbox{\hyperlink{stack_8h_ac014d3353391379c88a60ae28a890185}{pop}}(s)~s.\+array\mbox{[}-\/-\/s.\+pos\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structSTACK}{S\+T\+A\+CK}} \mbox{\hyperlink{stack_8h_a6aa5fe75a3d28f272961cb52c6495853}{criar\+\_\+stack}} ()
+\begin{DoxyCompactList}\small\item\em Função para criar a stack. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stack_8h_ae8408d38ede4f8cc601b71ac077d22f5}{print\+\_\+stack}} (\mbox{\hyperlink{structSTACK}{S\+T\+A\+CK}} s)
+\begin{DoxyCompactList}\small\item\em Função para dar print à stack. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{stack_8h_ac014d3353391379c88a60ae28a890185}\label{stack_8h_ac014d3353391379c88a60ae28a890185}} 
+\index{stack.h@{stack.h}!pop@{pop}}
+\index{pop@{pop}!stack.h@{stack.h}}
+\doxysubsubsection{\texorpdfstring{pop}{pop}}
+{\footnotesize\ttfamily \#define pop(\begin{DoxyParamCaption}\item[{}]{s }\end{DoxyParamCaption})~s.\+array\mbox{[}-\/-\/s.\+pos\mbox{]}}
+
+\mbox{\Hypertarget{stack_8h_a6ef44be049ac3987c33cd3d80f6ee42e}\label{stack_8h_a6ef44be049ac3987c33cd3d80f6ee42e}} 
+\index{stack.h@{stack.h}!push@{push}}
+\index{push@{push}!stack.h@{stack.h}}
+\doxysubsubsection{\texorpdfstring{push}{push}}
+{\footnotesize\ttfamily \#define push(\begin{DoxyParamCaption}\item[{}]{s,  }\item[{}]{val }\end{DoxyParamCaption})~s.\+array\mbox{[}s.\+pos++\mbox{]} = val;}
+
+\mbox{\Hypertarget{stack_8h_a70ed59adcb4159ac551058053e649640}\label{stack_8h_a70ed59adcb4159ac551058053e649640}} 
+\index{stack.h@{stack.h}!SIZE@{SIZE}}
+\index{SIZE@{SIZE}!stack.h@{stack.h}}
+\doxysubsubsection{\texorpdfstring{SIZE}{SIZE}}
+{\footnotesize\ttfamily \#define S\+I\+ZE~10240}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{stack_8h_a6aa5fe75a3d28f272961cb52c6495853}\label{stack_8h_a6aa5fe75a3d28f272961cb52c6495853}} 
+\index{stack.h@{stack.h}!criar\_stack@{criar\_stack}}
+\index{criar\_stack@{criar\_stack}!stack.h@{stack.h}}
+\doxysubsubsection{\texorpdfstring{criar\_stack()}{criar\_stack()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSTACK}{S\+T\+A\+CK}} criar\+\_\+stack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Função para criar a stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & A função não recebe nada como input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Devolve a stack 
+\end{DoxyReturn}
+\mbox{\Hypertarget{stack_8h_ae8408d38ede4f8cc601b71ac077d22f5}\label{stack_8h_ae8408d38ede4f8cc601b71ac077d22f5}} 
+\index{stack.h@{stack.h}!print\_stack@{print\_stack}}
+\index{print\_stack@{print\_stack}!stack.h@{stack.h}}
+\doxysubsubsection{\texorpdfstring{print\_stack()}{print\_stack()}}
+{\footnotesize\ttfamily void print\+\_\+stack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structSTACK}{S\+T\+A\+CK}}}]{s }\end{DoxyParamCaption})}
+
+
+
+Função para dar print à stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & A função print\+\_\+stack recebe a stack como input \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+nada 
+\end{DoxyReturn}

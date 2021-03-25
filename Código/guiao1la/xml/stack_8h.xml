@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="stack_8h" kind="file" language="C++">
+    <compoundname>stack.h</compoundname>
+    <includedby refid="parser_8c" local="yes">parser.c</includedby>
+    <includedby refid="stack_8c" local="yes">stack.c</includedby>
+    <invincdepgraph>
+      <node id="3">
+        <label>stack.c</label>
+        <link refid="stack_8c"/>
+      </node>
+      <node id="1">
+        <label>stack.h</label>
+        <link refid="stack_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>parser.c</label>
+        <link refid="parser_8c"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="structSTACK" prot="public">STACK</innerclass>
+      <sectiondef kind="define">
+      <memberdef kind="define" id="stack_8h_1a70ed59adcb4159ac551058053e649640" prot="public" static="no">
+        <name>SIZE</name>
+        <initializer>10240</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="stack.h" line="1" column="9" bodyfile="stack.h" bodystart="1" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stack_8h_1a6ef44be049ac3987c33cd3d80f6ee42e" prot="public" static="no">
+        <name>push</name>
+        <param><defname>s</defname></param>
+        <param><defname>val</defname></param>
+        <initializer>s.array[s.pos++] = val;</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="stack.h" line="10" column="9" bodyfile="stack.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="stack_8h_1ac014d3353391379c88a60ae28a890185" prot="public" static="no">
+        <name>pop</name>
+        <param><defname>s</defname></param>
+        <initializer>s.array[--s.pos]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="stack.h" line="13" column="9" bodyfile="stack.h" bodystart="13" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="stack_8h_1a6aa5fe75a3d28f272961cb52c6495853" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="structSTACK" kindref="compound">STACK</ref></type>
+        <definition>STACK criar_stack</definition>
+        <argsstring>()</argsstring>
+        <name>criar_stack</name>
+        <briefdescription>
+<para>Função para criar a stack. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A função não recebe nada como input </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Devolve a stack </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="stack.h" line="7" column="7" bodyfile="stack.c" bodystart="12" bodyend="16" declfile="stack.h" declline="7" declcolumn="7"/>
+      </memberdef>
+      <memberdef kind="function" id="stack_8h_1ae8408d38ede4f8cc601b71ac077d22f5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void print_stack</definition>
+        <argsstring>(STACK s)</argsstring>
+        <name>print_stack</name>
+        <param>
+          <type><ref refid="structSTACK" kindref="compound">STACK</ref></type>
+          <declname>s</declname>
+        </param>
+        <briefdescription>
+<para>Função para dar print à stack. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>line</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>A função print_stack recebe a stack como input </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>nada </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="stack.h" line="8" column="6" bodyfile="stack.c" bodystart="21" bodyend="25" declfile="stack.h" declline="8" declcolumn="6"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="stack_8h_1a70ed59adcb4159ac551058053e649640" refkind="member"><highlight class="preprocessor">#define<sp/>SIZE<sp/>10240</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2" refid="structSTACK" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="3" refid="structSTACK_1a9703e416d7a05b3b5529df20e157bde2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">long</highlight><highlight class="normal"><sp/>array[<ref refid="stack_8h_1a70ed59adcb4159ac551058053e649640" kindref="member">SIZE</ref>];<sp/></highlight></codeline>
+<codeline lineno="4" refid="structSTACK_1a34713f9f94a01dcc0642d0ea0870a335" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="structSTACK_1a34713f9f94a01dcc0642d0ea0870a335" kindref="member">pos</ref>;</highlight></codeline>
+<codeline lineno="5"><highlight class="normal">}<sp/><ref refid="structSTACK" kindref="compound">STACK</ref>;</highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"><ref refid="structSTACK" kindref="compound">STACK</ref><sp/><ref refid="stack_8h_1a6aa5fe75a3d28f272961cb52c6495853" kindref="member">criar_stack</ref>();</highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="stack_8h_1ae8408d38ede4f8cc601b71ac077d22f5" kindref="member">print_stack</ref>(<ref refid="structSTACK" kindref="compound">STACK</ref><sp/>s);</highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="stack_8h_1a6ef44be049ac3987c33cd3d80f6ee42e" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>push(s,<sp/>val)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="11"><highlight class="preprocessor"><sp/><sp/><sp/>s.array[s.pos++]<sp/>=<sp/>val;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13" refid="stack_8h_1ac014d3353391379c88a60ae28a890185" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>pop(s)<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>\</highlight></codeline>
+<codeline lineno="14"><highlight class="preprocessor"><sp/><sp/>s.array[--s.pos]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="stack.h"/>
+  </compounddef>
+</doxygen>
