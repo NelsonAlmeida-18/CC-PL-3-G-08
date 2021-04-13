@@ -37,7 +37,8 @@ int is_empty(STACK *s) {
 }
 
 void print_stack(STACK *s) {
-  for(int K = 0; K < s->n_elems; K++) {
+  int K;
+  for(K = 0; K < s->n_elems; K++) {
     DATA elem = s->stack[K];
     TYPE type = elem.type;
     switch(type) {
@@ -51,6 +52,7 @@ void print_stack(STACK *s) {
         printf(" ""%s", elem.STRING); break;
     }
   }
+//  printf("Num elems:%d\n",K);
   printf("\n");
 }
 

@@ -3,92 +3,53 @@
 #include <string.h>
 #include "parser.h"
 #include "stack.h"
+#include "funcoes.h"
 
-//criar nova stack para ir acomulando os elementos
-#define DOLLAR_SIGN(nums,_stack)\
-	STACK *c = create_stack();\
-	int i =0;\
-	while(i<nums){\
-		DATA X=pop(_stack);\
-		push(c,X);\
-		i+=1;\
-	}\
-	DATA MY_VAR=pop(_stack);\
-	push(_stack,MY_VAR);\
-	while(i>0){\
-		DATA x = pop(c);\
-		push(_stack,x);\
-	}\
-	push(_stack,MY_VAR); \
-//remove ultimo item
-#define PONTO_VIRGULA(_stack)\
-	pop(_stack);
-//troca ordem dos dois ultimos
-#define BARRA(_stack)\
-	DATA x=pop(_stack); \
-	DATA y=pop(_stack); \
-	push(_stack,x); \
-	push(_stack,y);
-//subtrai
-#define MENOS(_stack)\
-	if(has_type(top(_stack),STRING)==0){ \
-		INTEGER X = pop(_stack); \
-		INTEGER Y = pop(_stack); \
-		push_STRING(_stack,X-Y);\
-	}\
-	else if(has_type(top(_stack),INTEGER)==0){ \
-		INTEGER X = pop(_stack); \
-		INTEGER Y = pop(_stack); \
-		push_STRING(_stack,X-Y);\
-	}\
-	else if(has_type(top(_stack),DOUBLE)==0){ \
-		NUMBER X = pop(_stack); \
-		NUMBER Y = pop(_stack); \
-		push_STRING(_stack,X-Y);\
-	}\
-	if(has_type(top(_stack),NUMBER)==0){ \
-		NUMBER X = pop(_stack); \
-		NUMBER Y = pop(_stack); \
-		push_STRING(_stack,X-Y);\
-	}
-//soma
-#define MAIS(_stack)\
-	if(has_type(top(_stack),STRING)==0){ \
-		INTEGER X = pop(_stack); \
-		INTEGER Y = pop(_stack); \
-		push_STRING(_stack,X+Y);\
-	}\
-	else if(has_type(top(_stack),INTEGER)==0){ \
-		INTEGER X = pop(_stack); \
-		INTEGER Y = pop(_stack); \
-		push_STRING(_stack,X+Y);\
-	}\
-	else if(has_type(top(_stack),DOUBLE)==0){ \
-		NUMBER X = pop(_stack); \
-		NUMBER Y = pop(_stack); \
-		push_STRING(_stack,X+Y);\
-	}\
-	if(has_type(top(_stack),NUMBER)==0){ \
-		NUMBER X = pop(_stack); \
-		NUMBER Y = pop(_stack); \
-		push_STRING(_stack,X+Y);\
-	}
-//duplica o ultimo item
+#define fun_getsnewline(_stack)\
+	char linee[10240];\
+	assert(fgets(linee,10240,stdin)!=NULL);\
+	assert(linee[strlen(linee)-1]=='\n');\
+	push_STRING(_stack,linee);
+
 #define UNDERSCORE(_stack)\
+	DATA x = top(_stack);\
+	push(_stack,x);
+
+#define BARRABARRA(_stack)\
 	DATA x = pop(_stack);\
 	push(_stack,x);\
-	push(_stack,x);\
 
-#define i(_stack)\
-	DATA x = pop(_stack);\
-	int test = (int)x;\
-	push_LONG(_stack,test);
 
-void parse(char *line){
+void parse(){
 	STACK *s = create_stack();
+	char linee[10240];
+	assert(fgets(linee,10240,stdin)!=NULL);
+	assert(linee[strlen(linee)-1]=='\n');
+	push_STRING(s,linee);
 	char *delim = " \t\n";
-	for(char *token = strtok(line,delim); token !=NULL ; token = strtok(NULL,delim)){
-		if(strcmp(token, ";")==0){
+	for(char *token = strtok(linee,delim); token !=NULL ; token = strtok(NULL,delim)){		
+		if(strcmp(token, "l")==0){
+			fun_getsnewline(s);
+		}
+		else if(strcmp(token, "i")==0){
+			converteInt(s);
+		}
+		else if(strcmp(token, "+")==0){
+			soma(s);
+		}
+		else if(strcmp(token, "_")==0){
+			UNDERSCORE(s);
+		}
+		else if(strcmp(token, "\\")==0){
+			BARRABARRA(s);
+		}
+	}
+//	print_stack(s);
+/*
+		else if(strcmp(token, "i")==0){
+			convert_to_int(s);
+		}
+	    else if(strcmp(token, ";")==0){
 			PONTO_VIRGULA(s);
 		}
 		else if(strcmp(token, "\\")==0){
@@ -108,5 +69,5 @@ void parse(char *line){
 			i(s);
 		}
 	}
-	print_stack(s);
+*/
 }
