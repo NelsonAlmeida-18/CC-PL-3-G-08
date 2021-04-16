@@ -1,1 +1,0 @@
-Fazer os unions na stack: https://www.tutorialspoint.com/cprogramming/c_unions.html
