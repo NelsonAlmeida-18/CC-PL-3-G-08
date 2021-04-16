@@ -65,26 +65,17 @@ void converteInt(STACK *s) {
 //fazer
 void converteDOUBLE(STACK *s) {             
    DATA x = pop(s);                              
-   if(has_type(x,DOUBLE)) {                  
-     push(s,x);  
-   } 
-/*
-   else if(has_type(x,CHAR)) {
-   	  char y = x.CHAR;
-   	  double k = atoi(y);              
-      push_DOUBLE(s,k); 
-   }
-*/ 
-   else if(has_type(x,STRING)) { 
+   if(has_type(x,LONG)) {                
+      push_DOUBLE(s,x.LONG);  
+   } else if(has_type(x,CHAR)) {               
+      push_DOUBLE(s,x.CHAR); 
+   } else if(has_type(x,STRING)) {
       double y = atof(x.STRING);      
-      push_LONG(s,y); 
-   } 
-   else if(has_type(x,LONG)){ 
-   		double y = x.DOUBLE;
-   		double k = (double)y;
-     	push_DOUBLE(s,k);    
+      push_DOUBLE(s,y);
+   } else if (has_type(x,DOUBLE)){
+      push_DOUBLE(s,x.DOUBLE);    
    }
-}
+} 
 
 void converteCHAR(STACK *s){
 	DATA X = pop(s);
