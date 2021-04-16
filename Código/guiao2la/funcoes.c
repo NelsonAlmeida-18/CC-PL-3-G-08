@@ -1,3 +1,8 @@
+/**
+  *@file Ficheiro que contém as funções a utilizar no main .
+  *\brief Neste ficheiro está presente todas as funções das expressões aritméticas.
+  *@date April 2021
+  */
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -5,35 +10,39 @@
 #include <math.h>
 
 //stack
-/**@brief O caracter barra invoca esta função que troca os dois elementos do topo da stack
-  *@params Esta função tem como parâmetros o apontador da stack
+/**
+  *\brief O caracter barra invoca esta função que troca os dois elementos do topo da stack
+  *@param Esta função tem como parâmetros o apontador da stack
   *@returns Esta função não tem retorno
-*/
+  */
 void barrabarra(STACK *s){
 	DATA x = pop(s);
 	DATA y = pop(s);
 	push(s,x);
 	push(s,y);
 }
-/**@brief O caracter "Underscore" invoca esta função que duplica o elemento do topo da stack
-  *@params Esta função tem como parâmetros o apontador da stack
+/**
+  *\brief O caracter "Underscore" invoca esta função que duplica o elemento do topo da stack
+  *@param Esta função tem como parâmetros o apontador da stack
   *@returns Esta função não tem retorno
-*/
+  */
 void underscore(STACK *s){
 	DATA x = top(s);
 	push(s,x);
 }
-/**@brief O caracter "Ponto e virgula" invoca esta função que retira o elemento do topo da stack
-  *@params Esta função tem como parâmetros o apontador da stack
+/**
+  *\brief O caracter "Ponto e virgula" invoca esta função que retira o elemento do topo da stack
+  *@param Esta função tem como parâmetros o apontador da stack
   *@returns Esta função não tem retorno
 */
 void ponto_virgula(STACK *s){
 	pop(s);
 }
-/**@brief O caracter "Cifrãos" invoca esta função que copia o n-ésimo elemento da stack e o coloca no topo da mesma.
-  *@params Esta função tem como parâmetros o apontador da stack
+/**
+  *\brief O caracter "Cifrãos" invoca esta função que copia o n-ésimo elemento da stack e o coloca no topo da mesma.
+  *@param Esta função tem como parâmetros o apontador da stack
   *@returns Esta função não tem retorno
-*/
+  */
 void dollarsign (STACK *s){
 	STACK *c = create_stack();
 	DATA x = pop(s);
@@ -53,7 +62,11 @@ void dollarsign (STACK *s){
 	}
 	push(s,k);
 }
-
+/**
+  *\brief O caracter "Arroba" invoca esta função que troca a posicao dos 3 elementos no topo da stack.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void arroba(STACK *s){
 	DATA x = pop(s);
 	DATA y = pop(s);
@@ -63,6 +76,11 @@ void arroba(STACK *s){
 	push(s,z);
 }
 
+/**
+  *\brief A funcao "converteInt" converte um DATA em Int.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 //conversoes
 void converteInt(STACK *s) {             
    DATA x = pop(s);                              
@@ -76,6 +94,12 @@ void converteInt(STACK *s) {
    } else 
      push(s,x);    
 }
+
+/**
+  *\brief A funcao "converteDOUBLE" converte um valor do tipo DATA num Double.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void converteDOUBLE(STACK *s) {             
    DATA x = pop(s);                              
    if(has_type(x,LONG)) {                
@@ -89,7 +113,11 @@ void converteDOUBLE(STACK *s) {
       push_DOUBLE(s,x.DOUBLE);    
    }
 } 
-
+/**
+  *\brief A funcao "converteCHAR" converte um valor do tipo DATA num Char.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void converteCHAR(STACK *s){
 	DATA X = pop(s);
 	if(has_type(X,CHAR)){
@@ -105,6 +133,11 @@ void converteCHAR(STACK *s){
 
 //operacoes
 
+/**
+  *\brief A funcao "incrementa" incrementa(+1) o valor do DATA.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void incrementa(STACK *s){
 	DATA x = pop(s);
 	DATA res;
@@ -122,7 +155,11 @@ void incrementa(STACK *s){
 	}
 	push(s,res);
 }
-
+/**
+  *\brief A funcao "decrementa" decrementa(-1) o valor do DATA.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void decrementa(STACK *s){
 	DATA x = pop(s);
 	DATA res;
@@ -141,6 +178,11 @@ void decrementa(STACK *s){
 	push(s,res);
 }
 
+/**
+  *\brief A funcao "soma" realiza a soma entre dois DATA .
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void soma(STACK *s) {             
   	DATA x = pop(s);
   	DATA y = pop(s);
@@ -184,7 +226,11 @@ void soma(STACK *s) {
   	push(s,res);
 }
 
-
+/**
+  *\brief A funcao "subtracao" subtrai dois DATA.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void subtracao(STACK *s) {             
   	DATA x = pop(s);
   	DATA y = pop(s);
@@ -228,6 +274,11 @@ void subtracao(STACK *s) {
   	push(s,res);
 }
 
+/**
+  *\brief A funcao "mult" realiza a multiplicação de dois DATA.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void mult(STACK *s) {             
   	DATA x = pop(s);
   	DATA y = pop(s);
@@ -271,6 +322,11 @@ void mult(STACK *s) {
   	push(s,res);
 }
 
+/**
+  *\brief A funcao "divisao" realiza a multiplicação de dois DATA.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void divisao(STACK *s) {                                      
     DATA x = pop(s);                                     
     DATA y = pop(s);                                     
@@ -305,6 +361,11 @@ void divisao(STACK *s) {
  push(s,res); 
 }
 
+/**
+  *\brief A funcao "resto" realiza o resto da divisao de dois DATA.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void resto(STACK *s)  {                                   
     DATA y = pop(s);                                
     DATA x = pop(s);                                
@@ -324,6 +385,11 @@ void resto(STACK *s)  {
  push(s,res);
 }
 
+/**
+  *\brief A funcao "expon" realiza a exponenciação de um DATA em relacao ao DATA que lhe serve de base.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void expon(STACK *s) {             
   	DATA x = pop(s);
   	DATA y = pop(s);
@@ -368,6 +434,12 @@ void expon(STACK *s) {
 }
 
 //Operacoes lógicas
+
+/**
+  *\brief A funcao "AMPERSAND" realiza a interseção de dois DATA na forma binária ( é 1 apenas se ambos os bits forem 1).
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void AMPERSAND(STACK *s) {                              
     DATA x = pop(s);                                
     DATA y = pop(s);                                
@@ -387,6 +459,11 @@ void AMPERSAND(STACK *s) {
  push(s,res);
 }
 
+/**
+  *\brief A funcao "XOR" realiza a reuniao de dois DATA na forma binária ( é 1 se os dois bits forem diferentes).
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void XOR(STACK *s)  {                                   
     DATA x = pop(s);                                
     DATA y = pop(s);                                
@@ -406,7 +483,12 @@ void XOR(STACK *s)  {
  push(s,res);
 }
 
-void NOT(STACK *s)   {                                   
+/**
+  *\brief A funcao "NOT" realiza o oposto do DATA recebido na forma binaria.
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
+void NOT(STACK *s){                                   
     DATA x = pop(s);                                
     DATA res;                                            
  if(has_type(x, LONG)) {                                 
@@ -418,6 +500,11 @@ void NOT(STACK *s)   {
  push(s,res);
 }
 
+/**
+  *\brief A funcao "OR" realiza a reunião de dois DATA na forma binária (é 1 se qualquer um dos dois bits for 1).
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void OR(STACK *s)    {                                   
     DATA x = pop(s);                                
     DATA y = pop(s);                                

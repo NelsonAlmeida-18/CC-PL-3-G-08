@@ -1,6 +1,7 @@
 /**
-  *@file Ficheiro que inicia a função parser, contudo serve unica e exclusivamente para isso
-  *@returns Retorna um int atendendo ao formato da função
+  *@file Ficheiro da função main. 
+  *\brief Esta é a função principal do programa.
+  *@returns Retorna 0, valor correspondente ao tipo da funcao main.
 */
 #include <stdio.h>
 #include <string.h>

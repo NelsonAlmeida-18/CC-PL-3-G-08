@@ -1,9 +1,8 @@
 /**
   *@file Ficheiro que dá parse aos comandos.
-  *\brief Neste ficheiro está presente uma função e uma macro.
-  @author Nelson Almeida
-  @date April 2021
-  *@returns Retorna um int atendendo ao formato da função
+  *\brief Neste ficheiro está presente uma função e uma macro.s
+  *@date April 2021
+  *@returns Retorna a impressão stack
 */
 #include <stdio.h>
 #include <stdlib.h>
@@ -12,7 +11,8 @@
 #include "stack.h"
 #include "funcoes.h"
 
-/**Esta macro tem a função de ler uma nova linha de input ao comando l, esta nova linha é inserida na STACK.
+/**
+ *\brief Esta macro tem a função de ler uma nova linha de input ao comando l, esta nova linha é inserida na STACK. 
 */
 #define fun_getsnewline(_stack)\
 	char linee[10240];\
@@ -20,6 +20,11 @@
 	assert(linee[strlen(linee)-1]=='\n');\
 	push_STRING(_stack,linee);
 
+/**
+  *\brief A funcao parse divide as linhas de input em diversas partes mais pequenas a certos demarcadores. Tais como: espaço, tabs e enters.
+  *@param Esta função nao tem parametros.
+  *@returns Esta função não tem retorno
+  */
 void parse(){
 /**A função parse divide as linhas de input em diversas partes mais pequenas a certos demarcadores. Tais como: espaço, tabs e enters.
 */
