@@ -43,13 +43,13 @@ void print_stack(STACK *s) {
     TYPE type = elem.type;
     switch(type) {
       case LONG:
-        printf(" ""%ld", elem.LONG); break;
+        printf("""%ld", elem.LONG); break;
       case DOUBLE:
-        printf(" ""%g", elem.DOUBLE); break;
+        printf("""%g", elem.DOUBLE); break;
       case CHAR:
-        printf(" ""%c", elem.CHAR); break;
+        printf("""%c", elem.CHAR); break;
       case STRING:
-        printf(" ""%s", elem.STRING); break;
+        printf("""%s", elem.STRING); break;
     }
   }
 //  printf("Num elems:%d\n",K);
