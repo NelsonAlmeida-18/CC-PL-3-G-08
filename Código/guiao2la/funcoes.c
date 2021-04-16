@@ -310,51 +310,25 @@ void divisao(STACK *s) {
   	push(s,res);
 }
 
-//rever resto
-/*
-void resto(STACK *s) {             
-  	DATA x = pop(s);
-  	DATA y = pop(s);
-  	DATA res;
-  	if (has_type(x,LONG) && has_type(y,LONG)){
-  		res.type= LONG;
-  		res.LONG = x.LONG % y.LONG;
-  	}
-  	else if (has_type(x,DOUBLE) && has_type(y,LONG)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = x.DOUBLE % y.DOUBLE;
-  	}
-  	else if (has_type(x,DOUBLE) && has_type(y,DOUBLE)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = x.DOUBLE % y.DOUBLE;
-  	}
-  	else if (has_type(x,LONG) && has_type(y,DOUBLE)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = x.LONG % y.DOUBLE;
-  	}
-  	else if (has_type(x,LONG) && has_type(y,CHAR)){
-  		res.type= CHAR;
-  		res.CHAR = x.LONG % y.CHAR;
-  	}
-  	else if (has_type(x,CHAR) && has_type(y,LONG)){
-  		res.type= LONG;
-  		res.LONG = x.LONG % y.CHAR;
-  	}
-  	else if (has_type(x,DOUBLE) && has_type(y,CHAR)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = x.DOUBLE % y.CHAR;
-  	}
-  	else if (has_type(x,CHAR) && has_type(y,DOUBLE)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = x.DOUBLE % y.CHAR;
-  	}
-  	else if (has_type(x,CHAR) && has_type(y,CHAR)){
-  		res.type= LONG;
-  		res.LONG = x.CHAR % y.CHAR;
-  	}
-  	push(s,res);
+void resto(STACK *s)  {                                   
+    DATA y = pop(s);                                
+    DATA x = pop(s);                                
+    DATA res;                                            
+ if(has_type(x, LONG) && has_type(y, LONG)) {            
+    res.type = LONG;                                     
+    res.LONG = x.LONG % y.LONG;  }                       
+  else if (has_type(x, CHAR) && has_type(y, LONG)) {     
+    res.type = LONG;                                     
+    res.LONG = x.CHAR % y.LONG;  }                       
+  else if (has_type(x, LONG) && has_type(y, CHAR)) {     
+    res.type = LONG;                                     
+    res.LONG = x.LONG % y.CHAR;  }                       
+ else if (has_type(x, CHAR) && has_type(y, CHAR)) {      
+    res.type = LONG;                                     
+    res.LONG = x.CHAR % y.CHAR;  }                       
+ push(s,res);
 }
-*/
+
 void expon(STACK *s) {             
   	DATA x = pop(s);
   	DATA y = pop(s);

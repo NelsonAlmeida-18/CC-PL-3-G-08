@@ -82,7 +82,7 @@ void parse(){
 			mult(s);
 		}
 		else if(strcmp(token, "%")==0){
-//			resto(s);
+			resto(s);
 		}
 		else if(strcmp(token, "/")==0){
 			divisao(s);
