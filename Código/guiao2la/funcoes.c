@@ -5,21 +5,35 @@
 #include <math.h>
 
 //stack
+/**@brief O caracter barra invoca esta função que troca os dois elementos do topo da stack
+  *@params Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+*/
 void barrabarra(STACK *s){
 	DATA x = pop(s);
 	DATA y = pop(s);
 	push(s,x);
 	push(s,y);
 }
+/**@brief O caracter "Underscore" invoca esta função que duplica o elemento do topo da stack
+  *@params Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+*/
 void underscore(STACK *s){
 	DATA x = top(s);
 	push(s,x);
 }
-
+/**@brief O caracter "Ponto e virgula" invoca esta função que retira o elemento do topo da stack
+  *@params Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+*/
 void ponto_virgula(STACK *s){
 	pop(s);
 }
-
+/**@brief O caracter "Cifrãos" invoca esta função que copia o n-ésimo elemento da stack e o coloca no topo da mesma.
+  *@params Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+*/
 void dollarsign (STACK *s){
 	STACK *c = create_stack();
 	DATA x = pop(s);
@@ -62,7 +76,6 @@ void converteInt(STACK *s) {
    } else 
      push(s,x);    
 }
-//fazer
 void converteDOUBLE(STACK *s) {             
    DATA x = pop(s);                              
    if(has_type(x,LONG)) {                
