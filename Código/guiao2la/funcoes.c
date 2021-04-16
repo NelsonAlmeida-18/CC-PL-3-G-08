@@ -267,47 +267,38 @@ void mult(STACK *s) {
   	push(s,res);
 }
 
-void divisao(STACK *s) {             
-  	DATA x = pop(s);
-  	DATA y = pop(s);
-  	DATA res;
-  	if (has_type(x,LONG) && has_type(y,LONG)){
-  		res.type= LONG;
-  		res.LONG = y.LONG / x.LONG;
-  	}
-  	else if (has_type(x,DOUBLE) && has_type(y,LONG)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = y.LONG / x.DOUBLE;
-  	}
-  	else if (has_type(x,DOUBLE) && has_type(y,DOUBLE)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = y.DOUBLE / x.DOUBLE;
-  	}
-  	else if (has_type(x,LONG) && has_type(y,DOUBLE)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = y.DOUBLE / x.LONG;
-  	}
-  	else if (has_type(x,LONG) && has_type(y,CHAR)){
-  		res.type= CHAR;
-  		res.CHAR = y.CHAR/ x.LONG;
-  	}
-  	else if (has_type(x,CHAR) && has_type(y,LONG)){
-  		res.type= LONG;
-  		res.LONG = y.CHAR / x.LONG;
-  	}
-  	else if (has_type(x,DOUBLE) && has_type(y,CHAR)){
-  		res.type= DOUBLE;
-  		res.DOUBLE = y.CHAR / x.DOUBLE;
-  	}
-  	else if (has_type(x,CHAR) && has_type(y,DOUBLE)){
-  		res.type= DOUBLE;
-  		res.DOUBLE =  y.DOUBLE / x.CHAR ;
-  	}
-  	else if (has_type(x,CHAR) && has_type(y,CHAR)){
-  		res.type= LONG;
-  		res.LONG =  y.CHAR / x.CHAR;
-  	}
-  	push(s,res);
+void divisao(STACK *s) {                                      
+    DATA x = pop(s);                                     
+    DATA y = pop(s);                                     
+    DATA res;                                            
+ if(has_type(x, LONG) && has_type(y, LONG)) {             
+    res.type = LONG;                                     
+    res.LONG = y.LONG / x.LONG;  }                       
+  else if (has_type(x, DOUBLE) && has_type(y, LONG)) {   
+    res.type = DOUBLE;                                   
+    res.DOUBLE = y.LONG / x.DOUBLE;  }                   
+  else if (has_type(x, DOUBLE) && has_type(y, DOUBLE)) { 
+    res.type = DOUBLE;                                   
+    res.DOUBLE = y.DOUBLE / x.DOUBLE;  }                 
+  else if (has_type(x, LONG) && has_type(y, DOUBLE)) {   
+    res.type = DOUBLE;                                   
+    res.DOUBLE = y.DOUBLE / x.LONG;  }                   
+  else if (has_type(x, CHAR) && has_type(y, LONG)) { 
+    res.type = LONG;                                     
+    res.LONG = y.LONG / x.CHAR;   }                       
+  else if (has_type(x, LONG) && has_type(y, CHAR)) {  
+    res.type = LONG;                                     
+    res.LONG = y.CHAR / x.LONG;  }                       
+  else if (has_type(x, CHAR) && has_type(y, DOUBLE)) {   
+    res.type = DOUBLE;                                   
+    res.DOUBLE = y.DOUBLE / x.CHAR;  }                 
+ else if (has_type(x, DOUBLE) && has_type(y, CHAR)) {    
+    res.type = DOUBLE;                                   
+    res.DOUBLE = y.CHAR / x.DOUBLE ;  }                 
+ else if (has_type(x, CHAR) && has_type(y, CHAR)) {      
+    res.type = LONG;                                     
+    res.LONG = y.CHAR / x.CHAR;  }                       
+ push(s,res); 
 }
 
 void resto(STACK *s)  {                                   
