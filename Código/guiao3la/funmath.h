@@ -3,7 +3,7 @@
   *\brief Neste ficheiro temos todos os protótipos das funções utilizadas.
   *@date April 2021
  */
-
+void fun_getsnewline(STACK *s);
 //STACK
 /**
  *\brief Definição dos protótipos relativos à stack.

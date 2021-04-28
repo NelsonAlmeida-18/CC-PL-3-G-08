@@ -35,6 +35,7 @@ typedef struct data {
  * \brief Definição de uma estrutura com as caracteristicas da stack.
  */
 typedef struct stack {
+  DATA array[26];
   DATA *stack;
   int size;
   int n_elems;

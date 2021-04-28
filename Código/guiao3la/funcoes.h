@@ -1,3 +1,4 @@
+void e_com_shortcut(STACK *s);
 void menor(STACK *s);
 void maior(STACK *s);
 void igual(STACK *s);

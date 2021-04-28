@@ -2,6 +2,41 @@
 #include "stack.h"
 #include "funmath.h"
 
+//duvida com os shortcut
+void e_com_shortcut(STACK *s){
+  DATA x = pop(s);
+  DATA y = pop(s);
+  if((y.LONG == 0)&&(x.LONG==0)){
+    push(s,y);
+  }
+  else if((y.LONG==0)&&(x.LONG!=0)){
+    push(s,y);
+  }
+  else if((y.LONG!=0)&&(x.LONG==0)){
+    push(s,y);
+  }
+  else{
+    push(s,x);
+  }
+}
+
+void ou_com_shortcut(STACK *s){
+  DATA x = pop(s);
+  DATA y = pop(s);
+  if((y.LONG == 0)&&(x.LONG==0)){
+    push(s,y);
+  }
+  else if((y.LONG==0)&&(x.LONG!=0)){
+    push(s,y);
+  }
+  else if((y.LONG!=0)&&(x.LONG==0)){
+    push(s,y);
+  }
+  else{
+    push(s,x);
+  }
+}
+
 void igual(STACK *s){
     DATA x = pop(s);
     DATA y = pop(s);
@@ -177,4 +212,3 @@ void if_then_else(STACK *s){
       push(s,y);
     }
 }
-//fazer o não

@@ -9,6 +9,13 @@
 #include "stack.h"
 #include <math.h>
 
+
+void fun_getsnewline(STACK *s){
+  char linee[10240];
+  assert(fgets(linee,10240,stdin)!=NULL);
+  assert(linee[strlen(linee)-1]=='\n');
+  push_STRING(s,linee);
+}
 //stack
 /**
   *\brief O caracter barra invoca esta função que troca os dois elementos do topo da stack
