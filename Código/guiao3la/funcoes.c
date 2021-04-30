@@ -2,7 +2,11 @@
 #include "stack.h"
 #include "funmath.h"
 
-//duvida com os shortcut
+/**
+  *\brief Coloca o menor dos dois valores na STACK.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void e_menor(STACK *s) {
     DATA x = pop(s);   
     DATA y = pop(s);   
@@ -26,7 +30,7 @@ void e_menor(STACK *s) {
            push(s,y);                   
         }
         push(s,r); 
-    } else if(has_type(x, DOUBLE) || has_type(y, DOUBLE)) {    // 0.0 nao funciona 
+    } else if(has_type(x, DOUBLE) || has_type(y, DOUBLE)) {     
         if(x.DOUBLE<y.DOUBLE) { 
            push(s,x);
         } else {
@@ -66,7 +70,11 @@ void e_menor(STACK *s) {
         }
     }
 }
-
+/**
+  *\brief Coloca o maior dos dois valores na STACK.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void e_maior(STACK *s) {
     DATA x = pop(s);   
     DATA y = pop(s);   
@@ -90,7 +98,7 @@ void e_maior(STACK *s) {
            push(s,y);                   
         }
         push(s,r); 
-    } else if(has_type(x, DOUBLE) || has_type(y, DOUBLE)) {    // 0.0 nao funciona 
+    } else if(has_type(x, DOUBLE) || has_type(y, DOUBLE)) {     
         if(x.DOUBLE>y.DOUBLE) { 
            push(s,x);
         } else {
@@ -130,8 +138,11 @@ void e_maior(STACK *s) {
         }
     }
 }
-
-
+/**
+  *\brief Função que coloca no topo da STACK 0 se um dos seus elementos é 0, caso contrario retorna o topo.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void e_com_shortcut(STACK *s) {
     DATA x = pop(s);   
     DATA y = pop(s);   
@@ -163,7 +174,7 @@ void e_com_shortcut(STACK *s) {
            r.DOUBLE = x.DOUBLE;                     
         }
         push(s,r); 
-    } else if(has_type(x, DOUBLE) && has_type(y, DOUBLE)) {    // 0.0 nao funciona 
+    } else if(has_type(x, DOUBLE) && has_type(y, DOUBLE)) {    
         if(x.DOUBLE == 0 || y.DOUBLE == 0) { 
            r.type = LONG;
            r.LONG = 0;
@@ -215,7 +226,11 @@ void e_com_shortcut(STACK *s) {
         push(s,r);
     }
 }
-
+/**
+  *\brief Funçãp que coloca no topo da STACK 0 se os dois elementos forem 0, caso contrario retorna o penúltimo elemento.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void ou_com_shortcut(STACK *s) {
     DATA x = pop(s);   
     DATA y = pop(s);   
@@ -303,8 +318,11 @@ void ou_com_shortcut(STACK *s) {
         }
     }
 }
-
-
+/**
+  *\brief Funçao que se o topo e o penúltimo forem iguais retorna 1, caso contario retorna 0.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void igual(STACK *s) {                                      
     DATA x = pop(s);                                     
     DATA y = pop(s);                                                                                
@@ -345,6 +363,11 @@ void igual(STACK *s) {
             push_LONG(s,1);
         }else push_LONG(s,0);}                        
 }
+/**
+  *\brief Funçao que coloca no topo da STACK 0 se o topo for menor que o penúltimo, e 1 se o topo for maior ao penúltimo.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void menor(STACK *s) {                                      
     DATA x = pop(s);                                     
     DATA y = pop(s);                                                                                
@@ -385,7 +408,11 @@ void menor(STACK *s) {
             push_LONG(s,0);
         }else push_LONG(s,1);}                        
 }
-
+/**
+  *\brief Funçao que coloca no topo da STACK 0 se o topo for maior que o penúltimo, e 1 se o topo for menor ao penúltimo.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void maior(STACK *s) {                                      
     DATA x = pop(s);                                     
     DATA y = pop(s);                                                                                
@@ -426,7 +453,11 @@ void maior(STACK *s) {
             push_LONG(s,0);
         }else push_LONG(s,1);}                        
 }
-
+/**
+  *\brief Funçao que coloca no topo da STACK 1 se o topo for 0 e coloca 0 se o topo for qualquer número exceto 0.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void nao(STACK *s){
   DATA x = pop(s);
   if (x.LONG == 1){
@@ -445,7 +476,11 @@ void nao(STACK *s){
     push_LONG(s,0);
   }
 }
-
+/**
+  *\brief Condição if_then_else.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void if_then_else(STACK *s){
     DATA z = pop(s);
     DATA y = pop(s);

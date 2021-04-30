@@ -21,9 +21,9 @@
 	assert(linee[strlen(linee)-1]=='\n');\
 	push_STRING(_stack,linee);
 /**
-  *\brief A funcao parse divide as linhas de input em diversas partes mais pequenas a certos demarcadores. Tais como: espaço, tabs e enters.
-  *@param Esta função nao tem parametros.
-  *@returns Esta função não tem retorno
+  *\brief Converte o topo da stack para LONG.
+  *@param x-Recebe um elemento.
+  *@returns Retorna o elemento já convertido.
   */
 DATA makeLong(long x){
 	DATA y;
@@ -31,21 +31,33 @@ DATA makeLong(long x){
 	y.type = LONG;
 	return y;
 }
-
+/**
+  *\brief Converte o topo da stack para DOUBLE.
+  *@param x-Recebe um elemento.
+  *@returns Retorna o elemento já convertido.
+  */
 DATA makeDouble(double x){
 	DATA y;
 	y.DOUBLE = x;
 	y.type = DOUBLE;
 	return y;
 }
-
+/**
+  *\brief Converte o topo da stack para CHAR.
+  *@param x-Recebe um elemento.
+  *@returns Retorna o elemento já convertido.
+  */
 DATA makeCHAR(char x){
 	DATA y;
 	y.CHAR = x;
 	y.type = CHAR;
 	return y;
 }
-
+/**
+  *\brief Atribuição de valores por omissão às variaveis.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void popula_init_array(STACK *s){
 	s->array[0]=makeLong(10);	//A
 	s->array[1]=makeLong(11);	//B
@@ -60,7 +72,11 @@ void popula_init_array(STACK *s){
 	s->array[25]=makeLong(2);//Z	
 }
 
-//coloca novo dado na letra
+/**
+  *\brief Atribuição de novos valores às letras
+  *@param Recebe a STACK como argumento e um caracter.
+  *@returns Esta função não tem retorno.
+  */
 void doisPontosLetras(STACK *s, char letrinha){
 	DATA x = top(s);
 	long pos = letrinha;
@@ -74,7 +90,11 @@ void doisPontosLetras(STACK *s, char letrinha){
 		s->array[pos-65]=makeCHAR(x.CHAR);
 	}
 }
-
+/**
+  *\brief Função que coloca no topo da STACK o conteúdo da variável que é passado como parametro.
+  *@param Recebe a STACK como argumento e um caracter.
+  *@returns Esta função não tem retorno.
+  */
 void Letras(STACK *s, char letrinha){
 	long x = letrinha;
 	DATA y = (s->array[x-65]);
@@ -91,7 +111,11 @@ void Letras(STACK *s, char letrinha){
 		push_STRING(s,y.STRING);
 	}
 }
-
+/**
+  *\brief Função parse.
+  *@param Nao recebe parâmetros.
+  *@returns Esta função não tem retorno.
+  */
 void parse(){
 /**A função parse divide as linhas de input em diversas partes mais pequenas a certos demarcadores. Tais como: espaço, tabs e enters.
 */
