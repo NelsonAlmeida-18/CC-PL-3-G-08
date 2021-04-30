@@ -25,50 +25,71 @@
   *@param Esta função nao tem parametros.
   *@returns Esta função não tem retorno
   */
+DATA makeLong(long x){
+	DATA y;
+	y.LONG = x;
+	y.type = LONG;
+	return y;
+}
 
+DATA makeDouble(double x){
+	DATA y;
+	y.DOUBLE = x;
+	y.type = DOUBLE;
+	return y;
+}
+
+DATA makeCHAR(char x){
+	DATA y;
+	y.CHAR = x;
+	y.type = CHAR;
+	return y;
+}
 
 void popula_init_array(STACK *s){
-	s->array[0].LONG=10;	//A
-	s->array[1].LONG=11;	//B
-	s->array[2].LONG=12;	//C
-	s->array[3].LONG=13;	//D
-	s->array[4].LONG=14;	//E
-	s->array[5].LONG=15;	//F
-	s->array[13].CHAR='\n';	//N
-	s->array[18].CHAR = ' '; //S
-	s->array[23].LONG=0;//X
-	s->array[24].LONG=1;//Y
-	s->array[25].LONG=2;//Z	
+	s->array[0]=makeLong(10);	//A
+	s->array[1]=makeLong(11);	//B
+	s->array[2]=makeLong(12);	//C
+	s->array[3]=makeLong(13);	//D
+	s->array[4]=makeLong(14);	//E
+	s->array[5]=makeLong(15);	//F
+	s->array[13]=makeCHAR('\n');	//N
+	s->array[18]=makeCHAR(' '); //S
+	s->array[23]=makeLong(0);//X
+	s->array[24]=makeLong(1);//Y
+	s->array[25]=makeLong(2);//Z	
 }
 
-
-//magicamente também não avalia os tipos de dados
-void editorLetrinhas(STACK *s, char letrinha){
-	DATA x = pop(s);
+//coloca novo dado na letra
+void doisPontosLetras(STACK *s, char letrinha){
+	DATA x = top(s);
 	long pos = letrinha;
 	if (has_type(x,LONG)){
-		s->array[pos-65].LONG=x.LONG;
-		printf("has type: L");
+		s->array[pos-65]=makeLong(x.LONG);
 	}
 	else if (has_type(x,DOUBLE)){
-		s->array[pos-65].DOUBLE=x.DOUBLE;
-		printf("has type: D");
+		s->array[pos-65]=makeDouble(x.DOUBLE);
 	}
 	else if (has_type(x,CHAR)){
-		s->array[pos-65].CHAR=x.CHAR;
-		printf("has type: C");
-	}
-	else if(has_type(x,STRING)){
-		s->array[pos-65].STRING = x.STRING;
-		printf("has type: S");
+		s->array[pos-65]=makeCHAR(x.CHAR);
 	}
 }
 
-//porque não consegue avaliar tipos?
-void letrinhas(STACK *s, char letrinha){
+void Letras(STACK *s, char letrinha){
 	long x = letrinha;
 	DATA y = (s->array[x-65]);
-	push_LONG(s,y.LONG);
+	if (has_type(y,LONG)){
+		push_LONG(s,y.LONG);
+	}
+	else if (has_type(y,DOUBLE)){
+		push_DOUBLE(s,y.DOUBLE);
+	}
+	else if (has_type(y,CHAR)){
+		push_CHAR(s,y.CHAR);
+	}
+	else if (has_type(y,STRING)){
+		push_STRING(s,y.STRING);
+	}
 }
 
 void parse(){
@@ -204,22 +225,174 @@ void parse(){
 		else if(strcmp(token,"e&")==0){
 			e_com_shortcut(s);
 		}
-
+		else if(strcmp(token,"e|")==0){
+			ou_com_shortcut(s);
+		}
 		//menor dos dois
 		else if(strcmp(token,"e<")==0){
-			menor_dos_dois(s);
+			e_menor(s);
 		}
 		else if(strcmp(token,"e>")==0){
-			maior_dos_dois(s);
+			e_maior(s);
 		}
 		else if(strcmp(token,"?")==0){
 			if_then_else(s);
 		}
 		else if(strcmp(token, "A")==0){
-			letrinhas(s,'A');
+			Letras(s,'A');
 		}
 		else if(strcmp(token, ":A")==0){
-			editorLetrinhas(s,'A');
+			doisPontosLetras(s,'A');
+		}
+		else if(strcmp(token, ":B")==0){
+			doisPontosLetras(s,'B');
+		}
+		else if(strcmp(token, "B")==0){
+			Letras(s,'B');
+		}
+		else if(strcmp(token, ":C")==0){
+			doisPontosLetras(s,'C');
+		}
+		else if(strcmp(token, "C")==0){
+			Letras(s,'C');
+		}
+		else if(strcmp(token, ":D")==0){
+			doisPontosLetras(s,'D');
+		}
+		else if(strcmp(token, "D")==0){
+			Letras(s,'D');
+		}
+		else if(strcmp(token, ":E")==0){
+			doisPontosLetras(s,'E');
+		}
+		else if(strcmp(token, "E")==0){
+			Letras(s,'E');
+		}
+		else if(strcmp(token, ":F")==0){
+			doisPontosLetras(s,'F');
+		}
+		else if(strcmp(token, "F")==0){
+			Letras(s,'F');
+		}
+		else if(strcmp(token, ":G")==0){
+			doisPontosLetras(s,'G');
+		}
+		else if(strcmp(token, "G")==0){
+			Letras(s,'G');
+		}
+		else if(strcmp(token, ":H")==0){
+			doisPontosLetras(s,'H');
+		}
+		else if(strcmp(token, "H")==0){
+			Letras(s,'H');
+		}
+		else if(strcmp(token, ":I")==0){
+			doisPontosLetras(s,'I');
+		}
+		else if(strcmp(token, "I")==0){
+			Letras(s,'I');
+		}
+		else if(strcmp(token, ":J")==0){
+			doisPontosLetras(s,'J');
+		}
+		else if(strcmp(token, "J")==0){
+			Letras(s,'J');
+		}
+		else if(strcmp(token, ":K")==0){
+			doisPontosLetras(s,'K');
+		}
+		else if(strcmp(token, "K")==0){
+			Letras(s,'K');
+		}
+		else if(strcmp(token, ":L")==0){
+			doisPontosLetras(s,'L');
+		}
+		else if(strcmp(token, "L")==0){
+			Letras(s,'L');
+		}
+		else if(strcmp(token, ":M")==0){
+			doisPontosLetras(s,'M');
+		}
+		else if(strcmp(token, "M")==0){
+			Letras(s,'M');
+		}
+		else if(strcmp(token, ":N")==0){
+			doisPontosLetras(s,'N');
+		}
+		else if(strcmp(token, "N")==0){
+			Letras(s,'N');
+		}
+		else if(strcmp(token, ":O")==0){
+			doisPontosLetras(s,'O');
+		}
+		else if(strcmp(token, "O")==0){
+			Letras(s,'O');
+		}
+		else if(strcmp(token, ":P")==0){
+			doisPontosLetras(s,'P');
+		}
+		else if(strcmp(token, "P")==0){
+			Letras(s,'P');
+		}
+		else if(strcmp(token, ":Q")==0){
+			doisPontosLetras(s,'Q');
+		}
+		else if(strcmp(token, "Q")==0){
+			Letras(s,'Q');
+		}
+		else if(strcmp(token, ":R")==0){
+			doisPontosLetras(s,'R');
+		}
+		else if(strcmp(token, "R")==0){
+			Letras(s,'R');
+		}
+		else if(strcmp(token, ":S")==0){
+			doisPontosLetras(s,'S');
+		}
+		else if(strcmp(token, "S")==0){
+			Letras(s,'S');
+		}
+		else if(strcmp(token, ":T")==0){
+			doisPontosLetras(s,'T');
+		}
+		else if(strcmp(token, "T")==0){
+			Letras(s,'T');
+		}
+		else if(strcmp(token, ":U")==0){
+			doisPontosLetras(s,'U');
+		}
+		else if(strcmp(token, "U")==0){
+			Letras(s,'U');
+		}
+		else if(strcmp(token, ":V")==0){
+			doisPontosLetras(s,'V');
+		}
+		else if(strcmp(token, "V")==0){
+			Letras(s,'V');
+		}
+		else if(strcmp(token, ":W")==0){
+			doisPontosLetras(s,'W');
+		}
+		else if(strcmp(token, "W")==0){
+			Letras(s,'W');
+		}
+		else if(strcmp(token, ":X")==0){
+			doisPontosLetras(s,'X');
+		}
+		else if(strcmp(token, "X")==0){
+			Letras(s,'X');
+		}
+		else if(strcmp(token, ":Y")==0){
+			doisPontosLetras(s,'Y');
+		}
+		else if(strcmp(token, "Y")==0){
+			Letras(s,'Y');
+		}
+		else if(strcmp(token, ":Z")==0){
+			doisPontosLetras(s,'Z');
+		}
+		else if(strcmp(token, "Z")==0){
+			Letras(s,'Z');
 		}
 	}
 	print_stack(s);

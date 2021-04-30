@@ -4,7 +4,10 @@
  *@arg A função parse não requer qualquer argumento.
 */ 
 //popular inicialmente a stack
-void editorLetrinhas(STACK *s, char letrinha);
+DATA makeLong(long x);
+DATA makeDouble(double x);
+DATA makeCHAR(char x);
+void doisPontosLetras(STACK *s, char letrinha);
 void popula_init_array(STACK *s);
-void letrinhas(STACK *s, char letrinha);
+void Letras(STACK *s, char letrinha);
 void parse();
