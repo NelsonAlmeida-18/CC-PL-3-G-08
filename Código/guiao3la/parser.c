@@ -222,19 +222,30 @@ void parse(){
 			doisPontosLetras(s,'Z');
 		}
 		else{
+/**\brief Foram utilizados switch cases de modo a diminuir a Complexidade Ciclomática.
+*/
 			switch(*token){
+/**\brief Esta linha de código é inicializada aquando da leitura do "trigger" l, e busca a funçao que leva ao input de uma nova linha de código para ser incrementada.
+*/
 				case('l'):
 					fun_getsnewline(s);
 					break;
 				case('i'):
 					converteInt(s);
 					break;
+/**Esta linha de código é inicializada aquando da leitura do "trigger" f, e busca a função localizada no ficheiro funcoes que transforma em elementos do tipo double o topo da stack.
+*/
 				case('f'):
 					converteDOUBLE(s);
 					break;
+/**Esta linha de código é inicializada aquando da leitura do "trigger" c, e busca a função localizada no ficheiro funcoes que transforma em elementos do tipo char o topo da stack.
+*/
 				case ('c'):
 					converteCHAR(s);
 					break;
+//operações 
+/**Esta linha de código é inicializada aquando da leitura do "trigger" +, e busca a função localizada no ficheiro funcoes que realiza a operação aritmética da soma entre diversos tipos de valores.
+*/
 				case('('):
 					decrementa(s);
 					break;
@@ -260,18 +271,28 @@ void parse(){
 					expon(s);
 					break;
 //manipulação de stack
+/**Esta linha de código é inicializada aquando da leitura do "trigger" _, que duplica o elemento presente no topo da stack.
+*/
 				case('_'):
 					underscore(s);
 					break;
+/**Esta linha de código é inicializada aquando da leitura do "trigger" \, que troca os dois elementos no topo da stack.
+*/
 				case('\\'):
 					barrabarra(s);
 					break;
+/**Esta linha de código é inicializada aquando da leitura do "trigger" @, que roda os 3 elementos presentes no topo da stack.
+*/					
 				case('@'):
 					arroba(s);
 					break;
+/**Esta linha de código é inicializada aquando da leitura do "trigger" ;, que elimina(dá pop) ao elemento no topo da stack.
+*/					
 				case(';'):
 					ponto_virgula(s);
 					break;
+/**Esta linha de código é inicializada aquando da leitura do "trigger" $, que copia o n-ésimo elemento para o topo da stack.
+*/
 				case('$'):
 					dollarsign(s);
 					break;
