@@ -1,5 +1,5 @@
 /**
-  *@file Ficheiro que contem protótipos .                                                  !!!!!!!!!!!!!
+  *@file Ficheiro que contem protótipos .                                                  
   *\brief Neste ficheiro temos todos os protótipos das funções utilizadas.
   *@date April 2021
  */

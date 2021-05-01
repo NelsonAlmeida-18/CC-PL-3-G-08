@@ -8,8 +8,11 @@
 #include <stdlib.h>
 #include "stack.h"
 #include <math.h>
-
-
+/**
+  *\brief 
+  *@param Esta função tem como parâmetros o apontador da stack
+  *@returns Esta função não tem retorno
+  */
 void fun_getsnewline(STACK *s){
   char linee[10240];
   assert(fgets(linee,10240,stdin)!=NULL);
