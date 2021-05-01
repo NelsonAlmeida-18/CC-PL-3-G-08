@@ -13,14 +13,6 @@
 #include "funmath.h"
 
 /**
- *\brief Esta macro tem a função de ler uma nova linha de input ao comando l, esta nova linha é inserida na STACK. 
-*/
-#define fun_getsnewline(_stack)\
-	char linee[10240];\
-	assert(fgets(linee,10240,stdin)!=NULL);\
-	assert(linee[strlen(linee)-1]=='\n');\
-	push_STRING(_stack,linee);
-/**
   *\brief Converte o topo da stack para LONG.
   *@param x-Recebe um elemento.
   *@returns Retorna o elemento já convertido.
@@ -131,139 +123,25 @@ void parse(){
 	for(char *token = strtok(linee,delim); token !=NULL ; token = strtok(NULL,delim)){		
 		char *sobra1;
 		char *sobra2;
-
 		long val_l=strtol(token,&sobra1,10);
 		double val_d=strtod(token, &sobra2);
-
 		if(strlen(sobra1)==0){
 			push_LONG(s, val_l);
 		}
 		else if(strlen(sobra2)==0){
 			push_DOUBLE(s,val_d);
 		}
-/**\brief Esta linha de código é inicializada aquando da leitura do "trigger" l, e busca a macro anteriormente citada visando o input de uma nova linha de comandos
-   para ser interpretada.
-*/
-
-//settar A para 0 de forma a que o array comece no primeiro elemento;
-/*
-		else if(letras(token)==0){
-			int pos = converteInt(token);
-			push_LONG(s,array_letras[pos]);
-		}
-*/
-		else if(strcmp(token,"l")==0){
-			fun_getsnewline(s);
-		}
-		else if(strcmp(token, "i")==0){
-			converteInt(s);
-		}
-/**Esta linha de código é inicializada aquando da leitura do "trigger" f, e busca a função localizada no ficheiro funcoes que transforma em elementos do tipo double o topo da stack.
-*/
-		else if(strcmp(token, "f")==0){
-			converteDOUBLE(s);
-		}
-/**Esta linha de código é inicializada aquando da leitura do "trigger" c, e busca a função localizada no ficheiro funcoes que transforma em elementos do tipo char o topo da stack.
-*/
-		else if(strcmp(token, "c")==0){
-			converteCHAR(s);
-		}
-//operações 
-/**Esta linha de código é inicializada aquando da leitura do "trigger" +, e busca a função localizada no ficheiro funcoes que realiza a operação aritmética da soma entre diversos tipos de valores.
-*/
-		else if(strcmp(token, "(")==0){
-			decrementa(s);
-		}
-		else if(strcmp(token, ")")==0){
-			incrementa(s);
-		}
-		else if(strcmp(token, "+")==0){
-			soma(s);
-		}
-		else if(strcmp(token, "-")==0){
-			subtracao(s);
-		}
-		else if(strcmp(token, "*")==0){
-			mult(s);
-		}
-		else if(strcmp(token, "%")==0){
-			resto(s);
-		}
-		else if(strcmp(token, "/")==0){
-			divisao(s);
-		}
-		else if(strcmp(token, "#")==0){
-			expon(s);
-		}
-//manipulação da stack
-/**Esta linha de código é inicializada aquando da leitura do "trigger" _, que duplica o elemento presente no topo da stack.
-*/
-		else if(strcmp(token, "_")==0){
-			underscore(s);
-		}
-/**Esta linha de código é inicializada aquando da leitura do "trigger" \, que troca os dois elementos no topo da stack.
-*/
-		else if(strcmp(token, "\\")==0){
-			barrabarra(s);
-		}
-/**Esta linha de código é inicializada aquando da leitura do "trigger" @, que roda os 3 elementos presentes no topo da stack.
-*/
-
-		else if(strcmp(token, "@")==0){
-			arroba(s);
-		}
-/**Esta linha de código é inicializada aquando da leitura do "trigger" ;, que elimina(dá pop) ao elemento no topo da stack.
-*/
-
-		else if(strcmp(token, ";")==0){
-			ponto_virgula(s);
-		}
-/**Esta linha de código é inicializada aquando da leitura do "trigger" $, que copia o n-ésimo elemento para o topo da stack.
-*/
-		else if(strcmp(token, "$")==0){
-			dollarsign(s);
-		}
-		else if(strcmp(token, "&")==0){
-			AMPERSAND(s);
-		}
-		else if(strcmp(token, "|")==0){
-			OR(s);
-		}
-		else if(strcmp(token, "^")==0){
-			XOR(s);
-		}
-		else if(strcmp(token,"=")==0){
-			igual(s);
-		}
-		else if(strcmp(token,"<")==0){
-			menor(s);
-		}
-		else if(strcmp(token,">")==0){
-			maior(s);
-		}
-		else if(strcmp(token,"!")==0){
-			nao(s);
-		}
-//e com shortcut
-//ou com shortcut
 		else if(strcmp(token,"e&")==0){
 			e_com_shortcut(s);
 		}
 		else if(strcmp(token,"e|")==0){
 			ou_com_shortcut(s);
 		}
-		//menor dos dois
 		else if(strcmp(token,"e<")==0){
 			e_menor(s);
 		}
 		else if(strcmp(token,"e>")==0){
 			e_maior(s);
-		}
-		else if(strcmp(token,"?")==0){
-			if_then_else(s);
-		}
-		else if(strcmp(token, "A")==0){
-			Letras(s,'A');
 		}
 		else if(strcmp(token, ":A")==0){
 			doisPontosLetras(s,'A');
@@ -271,153 +149,236 @@ void parse(){
 		else if(strcmp(token, ":B")==0){
 			doisPontosLetras(s,'B');
 		}
-		else if(strcmp(token, "B")==0){
-			Letras(s,'B');
-		}
 		else if(strcmp(token, ":C")==0){
 			doisPontosLetras(s,'C');
-		}
-		else if(strcmp(token, "C")==0){
-			Letras(s,'C');
 		}
 		else if(strcmp(token, ":D")==0){
 			doisPontosLetras(s,'D');
 		}
-		else if(strcmp(token, "D")==0){
-			Letras(s,'D');
-		}
 		else if(strcmp(token, ":E")==0){
 			doisPontosLetras(s,'E');
-		}
-		else if(strcmp(token, "E")==0){
-			Letras(s,'E');
 		}
 		else if(strcmp(token, ":F")==0){
 			doisPontosLetras(s,'F');
 		}
-		else if(strcmp(token, "F")==0){
-			Letras(s,'F');
-		}
 		else if(strcmp(token, ":G")==0){
 			doisPontosLetras(s,'G');
-		}
-		else if(strcmp(token, "G")==0){
-			Letras(s,'G');
 		}
 		else if(strcmp(token, ":H")==0){
 			doisPontosLetras(s,'H');
 		}
-		else if(strcmp(token, "H")==0){
-			Letras(s,'H');
-		}
 		else if(strcmp(token, ":I")==0){
 			doisPontosLetras(s,'I');
-		}
-		else if(strcmp(token, "I")==0){
-			Letras(s,'I');
 		}
 		else if(strcmp(token, ":J")==0){
 			doisPontosLetras(s,'J');
 		}
-		else if(strcmp(token, "J")==0){
-			Letras(s,'J');
-		}
 		else if(strcmp(token, ":K")==0){
 			doisPontosLetras(s,'K');
-		}
-		else if(strcmp(token, "K")==0){
-			Letras(s,'K');
 		}
 		else if(strcmp(token, ":L")==0){
 			doisPontosLetras(s,'L');
 		}
-		else if(strcmp(token, "L")==0){
-			Letras(s,'L');
-		}
 		else if(strcmp(token, ":M")==0){
 			doisPontosLetras(s,'M');
-		}
-		else if(strcmp(token, "M")==0){
-			Letras(s,'M');
 		}
 		else if(strcmp(token, ":N")==0){
 			doisPontosLetras(s,'N');
 		}
-		else if(strcmp(token, "N")==0){
-			Letras(s,'N');
-		}
 		else if(strcmp(token, ":O")==0){
 			doisPontosLetras(s,'O');
-		}
-		else if(strcmp(token, "O")==0){
-			Letras(s,'O');
 		}
 		else if(strcmp(token, ":P")==0){
 			doisPontosLetras(s,'P');
 		}
-		else if(strcmp(token, "P")==0){
-			Letras(s,'P');
-		}
 		else if(strcmp(token, ":Q")==0){
 			doisPontosLetras(s,'Q');
-		}
-		else if(strcmp(token, "Q")==0){
-			Letras(s,'Q');
 		}
 		else if(strcmp(token, ":R")==0){
 			doisPontosLetras(s,'R');
 		}
-		else if(strcmp(token, "R")==0){
-			Letras(s,'R');
-		}
-		else if(strcmp(token, ":S")==0){
+    	else if(strcmp(token, ":S")==0){
 			doisPontosLetras(s,'S');
-		}
-		else if(strcmp(token, "S")==0){
-			Letras(s,'S');
 		}
 		else if(strcmp(token, ":T")==0){
 			doisPontosLetras(s,'T');
 		}
-		else if(strcmp(token, "T")==0){
-			Letras(s,'T');
-		}
 		else if(strcmp(token, ":U")==0){
 			doisPontosLetras(s,'U');
-		}
-		else if(strcmp(token, "U")==0){
-			Letras(s,'U');
 		}
 		else if(strcmp(token, ":V")==0){
 			doisPontosLetras(s,'V');
 		}
-		else if(strcmp(token, "V")==0){
-			Letras(s,'V');
-		}
 		else if(strcmp(token, ":W")==0){
 			doisPontosLetras(s,'W');
-		}
-		else if(strcmp(token, "W")==0){
-			Letras(s,'W');
 		}
 		else if(strcmp(token, ":X")==0){
 			doisPontosLetras(s,'X');
 		}
-		else if(strcmp(token, "X")==0){
-			Letras(s,'X');
-		}
 		else if(strcmp(token, ":Y")==0){
 			doisPontosLetras(s,'Y');
-		}
-		else if(strcmp(token, "Y")==0){
-			Letras(s,'Y');
 		}
 		else if(strcmp(token, ":Z")==0){
 			doisPontosLetras(s,'Z');
 		}
-		else if(strcmp(token, "Z")==0){
-			Letras(s,'Z');
-		}
+		else{
+			switch(*token){
+				case('l'):
+					fun_getsnewline(s);
+					break;
+				case('i'):
+					converteInt(s);
+					break;
+				case('f'):
+					converteDOUBLE(s);
+					break;
+				case ('c'):
+					converteCHAR(s);
+					break;
+				case('('):
+					decrementa(s);
+					break;
+				case(')'):
+					incrementa(s);
+					break;
+				case('+'):
+					soma(s);
+					break;
+				case('-'):
+					subtracao(s);
+					break;
+				case('*'):
+					mult(s);
+					break;
+				case('%'):
+					resto(s);
+					break;
+				case('/'):
+					divisao(s);
+					break;
+				case('#'):
+					expon(s);
+					break;
+//manipulação de stack
+				case('_'):
+					underscore(s);
+					break;
+				case('\\'):
+					barrabarra(s);
+					break;
+				case('@'):
+					arroba(s);
+					break;
+				case(';'):
+					ponto_virgula(s);
+					break;
+				case('$'):
+					dollarsign(s);
+					break;
+				case('&'):
+					AMPERSAND(s);
+					break;
+				case('|'):
+					OR(s);
+					break;
+				case('^'):
+					XOR(s);
+					break;
+				case('='):
+					igual(s);
+					break;
+				case('>'):
+					maior(s);
+					break;
+				case('<'):
+					menor(s);
+					break;
+				case('!'):
+					nao(s);
+					break;
+				case('?'):
+					if_then_else(s);
+					break;
+				case('A'):
+					Letras(s,'A');
+					break;
+				case('B'):
+					Letras(s,'B');
+					break;
+				case('C'):
+					Letras(s,'C');
+					break;
+				case('D'):
+					Letras(s,'D');
+					break;
+				case('E'):
+					Letras(s,'E');
+					break;
+				case('F'):
+					Letras(s,'F');
+					break;
+				case('G'):
+					Letras(s,'G');
+					break;
+				case('H'):
+					Letras(s,'H');
+					break;
+				case('I'):
+					Letras(s,'I');
+					break;
+				case('J'):
+					Letras(s,'J');
+					break;
+				case('K'):
+					Letras(s,'K');
+					break;
+				case('L'):
+					Letras(s,'L');
+					break;
+				case('M'):
+					Letras(s,'M');
+					break;
+				case('N'):
+					Letras(s,'N');
+					break;
+				case('O'):
+					Letras(s,'O');
+					break;
+				case('P'):
+					Letras(s,'P');
+					break;
+				case('Q'):
+					Letras(s,'Q');
+					break;
+				case('R'):
+					Letras(s,'R');
+					break;
+				case('S'):
+					Letras(s,'S');
+					break;
+				case('T'):
+					Letras(s,'T');
+					break;
+				case('U'):
+					Letras(s,'U');
+					break;
+				case('V'):
+					Letras(s,'V');
+					break;
+				case('W'):
+					Letras(s,'W');
+					break;
+				case('X'):
+					Letras(s,'X');
+					break;
+				case('Y'):
+					Letras(s,'Y');
+					break;
+				case('Z'):
+					Letras(s,'Z');
+					break;		
+			}
+		}	
 	}
 	print_stack(s);
 }

@@ -4,6 +4,7 @@
  *@arg A função parse não requer qualquer argumento.
 */ 
 //popular inicialmente a stack
+void fun_getsnewline(STACK *s);
 DATA makeLong(long x);
 DATA makeDouble(double x);
 DATA makeCHAR(char x);
