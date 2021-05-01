@@ -8,7 +8,11 @@
 #include <assert.h>
 #include "stack.h"
 #include "parser.h"
-
+/**
+  *\brief Função main.
+  *@param Nao recebe parametros.
+  *@returns Esta função retorna um inteiro
+  */
 int main(void) {
   parse();
   return 0;
