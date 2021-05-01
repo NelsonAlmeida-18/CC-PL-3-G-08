@@ -9,12 +9,12 @@
 
 #include <assert.h>
 /**
- * \brief Declara um tipo de dados enum.
+ * Declara um tipo de dados enum.
  */
 typedef enum {LONG = 1, DOUBLE = 2, CHAR = 4, STRING = 8} TYPE;
 
 /**
- * \brief Criação de máscaras INTEGER e NUMBER
+ * Criação de máscaras INTEGER e NUMBER
  */
 #define INTEGER  (LONG | CHAR)
 #define NUMBER   (INTEGER | DOUBLE)
@@ -32,7 +32,7 @@ typedef struct data {
 } DATA;
 
 /**
- * \brief Definição de uma estrutura com as caracteristicas da stack.
+ * Definição de uma estrutura com as caracteristicas da stack.
  */
 typedef struct stack {
   DATA array[26];
