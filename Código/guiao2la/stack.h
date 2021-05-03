@@ -9,35 +9,39 @@
 
 #include <assert.h>
 /**
- * \brief Declara um tipo de dados enum.
+ * Struct que enumera os tipos e que vai aplicá-los na struct data.
  */
 typedef enum {LONG = 1, DOUBLE = 2, CHAR = 4, STRING = 8} TYPE;
+/**< Tipo Long com o valor 1 (2⁰) associado 
+ * Tipo Double com o valor 2 (2¹) associado
+ * Tipo Char com o valor 4 (2²) associado
+ * Tipo String com o valor 8 (2³) associado 
+ **/
 
 /**
- * \brief Criação de máscaras INTEGER e NUMBER
+ * Criação de máscaras INTEGER e NUMBER
  */
 #define INTEGER  (LONG | CHAR)
 #define NUMBER   (INTEGER | DOUBLE)
 
 /**
- * \brief Definição de uma estrutura com  os tipos de dados que está na stack.
+ * Uma struct que nos dá os tipos de dados que estamos a usar na stack
  */
 typedef struct data {
-  TYPE type;
-  // Esta parte devia ser transformada numa union mais tarde
-  long LONG;
-  double DOUBLE;
-  char CHAR;
-  char *STRING;
+  TYPE type;       /**< tipos de dados vindos do enum TYPE */
+  long LONG;       /**< Tipo long */
+  double DOUBLE;   /**< Tipo double */
+  char CHAR;       /**< Tipo char */
+  char *STRING;    /**< Tipo string */
 } DATA;
 
 /**
- * \brief Definição de uma estrutura com as caracteristicas da stack.
+ * Definição de uma estrutura com as caracteristicas da stack.
  */
 typedef struct stack {
-  DATA *stack;
-  int size;
-  int n_elems;
+  DATA *stack;      /**< Tipo da stack */
+  int size;         /**< Tamanho da stack */
+  int n_elems;      /**< Numero de elementos ao momento na stack */
 } STACK;
 
 /**
