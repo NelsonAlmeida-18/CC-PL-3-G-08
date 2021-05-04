@@ -11,24 +11,29 @@
 /**
  * Struct que enumera os tipos e que vai aplicá-los na struct data.
  */
-typedef enum { LONG = 1, DOUBLE = 2, CHAR = 4, STRING = 8} TYPE;
-/**< Tipo Long com o valor 1 (2⁰) associado 
- * Tipo Double com o valor 2 (2¹) associado
- * Tipo Char com o valor 4 (2²) associado
- * Tipo String com o valor 8 (2³) associado 
- **/
+typedef enum { 
+  LONG = 1,    /**< Tipo Long com o valor 1 (2⁰) associado */
+  DOUBLE = 2,  /** Tipo Double com o valor 2 (2¹) associado */
+  CHAR = 4,    /** Tipo Char com o valor 4 (2²) associado */
+  STRING = 8   /** Tipo String com o valor 8 (2³) associado */
+  } 
+  TYPE;
+
 
 /**
- * Criação de máscaras INTEGER e NUMBER
+ * Criação de máscara INTEGER.
  */
 #define INTEGER  (LONG | CHAR)
+/**
+ * Criação de máscara NUMBER.
+ */
 #define NUMBER   (INTEGER | DOUBLE)
 
 /**
  * Uma struct que nos dá os tipos de dados que estamos a usar na stack
  */
 typedef struct data {
-  TYPE type;      /**< tipos de dados vindos do enum TYPE */
+  TYPE type;      /**< Tipos de dados vindos do enum TYPE */
   long LONG;      /**< Tipo long */
   double DOUBLE;  /**< Tipo double */
   char CHAR;      /**< Tipo char */
@@ -39,7 +44,7 @@ typedef struct data {
  * Definição de uma struct com as caracteristicas da stack.
  */
 typedef struct stack {
-  DATA array[26];
+  DATA array[26];  /**< Array 26 letras */
   DATA *stack;     /**< Tipo da stack */
   int size;        /**< Tamanho da stack */
   int n_elems;     /**< Numero de elementos ao momento na stack */
