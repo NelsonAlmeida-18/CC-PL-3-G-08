@@ -13,9 +13,9 @@
  */
 typedef enum {
   LONG = 1,    /**< Tipo Long com o valor 1 (2⁰) associado */
-  DOUBLE = 2,  /** Tipo Double com o valor 2 (2¹) associado */
-  CHAR = 4,    /** Tipo Char com o valor 4 (2²) associado */
-  STRING = 8   /** Tipo String com o valor 8 (2³) associado */
+  DOUBLE = 2,  /**<Tipo Double com o valor 2 (2¹) associado */
+  CHAR = 4,    /**< Tipo Char com o valor 4 (2²) associado */
+  STRING = 8   /**< ipo String com o valor 8 (2³) associado */
   } 
   TYPE;
 
