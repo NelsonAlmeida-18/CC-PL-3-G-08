@@ -11,98 +11,8 @@
 #include "stack.h"
 #include "funcoes.h"
 #include "funmath.h"
+#include "fun_vars.h"
 
-/**
-  *\brief Converte o topo da stack para LONG.
-  *@param x-Recebe um elemento.
-  *@returns Retorna o elemento já convertido.
-  */
-DATA makeLong(long x){
-	DATA y;
-	y.LONG = x;
-	y.type = LONG;
-	return y;
-}
-/**
-  *\brief Converte o topo da stack para DOUBLE.
-  *@param x-Recebe um elemento.
-  *@returns Retorna o elemento já convertido.
-  */
-DATA makeDouble(double x){
-	DATA y;
-	y.DOUBLE = x;
-	y.type = DOUBLE;
-	return y;
-}
-/**
-  *\brief Converte o topo da stack para CHAR.
-  *@param x-Recebe um elemento.
-  *@returns Retorna o elemento já convertido.
-  */
-DATA makeCHAR(char x){
-	DATA y;
-	y.CHAR = x;
-	y.type = CHAR;
-	return y;
-}
-/**
-  *\brief Atribuição de valores por omissão às variaveis.
-  *@param Recebe a STACK como argumento.
-  *@returns Esta função não tem retorno.
-  */
-void popula_init_array(STACK *s){
-	s->array[0]=makeLong(10);	//A
-	s->array[1]=makeLong(11);	//B
-	s->array[2]=makeLong(12);	//C
-	s->array[3]=makeLong(13);	//D
-	s->array[4]=makeLong(14);	//E
-	s->array[5]=makeLong(15);	//F
-	s->array[13]=makeCHAR('\n');	//N
-	s->array[18]=makeCHAR(' '); //S
-	s->array[23]=makeLong(0);//X
-	s->array[24]=makeLong(1);//Y
-	s->array[25]=makeLong(2);//Z	
-}
-
-/**
-  *\brief Atribuição de novos valores às letras
-  *@param Recebe a STACK como argumento e um caracter.
-  *@returns Esta função não tem retorno.
-  */
-void doisPontosLetras(STACK *s, char letrinha){
-	DATA x = top(s);
-	long pos = letrinha;
-	if (has_type(x,LONG)){
-		s->array[pos-65]=makeLong(x.LONG);
-	}
-	else if (has_type(x,DOUBLE)){
-		s->array[pos-65]=makeDouble(x.DOUBLE);
-	}
-	else if (has_type(x,CHAR)){
-		s->array[pos-65]=makeCHAR(x.CHAR);
-	}
-}
-/**
-  *\brief Função que coloca no topo da STACK o conteúdo da variável que é passado como parametro.
-  *@param Recebe a STACK como argumento e um caracter.
-  *@returns Esta função não tem retorno.
-  */
-void Letras(STACK *s, char letrinha){
-	long x = letrinha;
-	DATA y = (s->array[x-65]);
-	if (has_type(y,LONG)){
-		push_LONG(s,y.LONG);
-	}
-	else if (has_type(y,DOUBLE)){
-		push_DOUBLE(s,y.DOUBLE);
-	}
-	else if (has_type(y,CHAR)){
-		push_CHAR(s,y.CHAR);
-	}
-	else if (has_type(y,STRING)){
-		push_STRING(s,y.STRING);
-	}
-}
 /**
   *\brief Função parse.
   *@param Nao recebe parâmetros.
@@ -131,96 +41,6 @@ void parse(){
 		else if(strlen(sobra2)==0){
 			push_DOUBLE(s,val_d);
 		}
-		else if(strcmp(token,"e&")==0){
-			e_com_shortcut(s);
-		}
-		else if(strcmp(token,"e|")==0){
-			ou_com_shortcut(s);
-		}
-		else if(strcmp(token,"e<")==0){
-			e_menor(s);
-		}
-		else if(strcmp(token,"e>")==0){
-			e_maior(s);
-		}
-		else if(strcmp(token, ":A")==0){
-			doisPontosLetras(s,'A');
-		}
-		else if(strcmp(token, ":B")==0){
-			doisPontosLetras(s,'B');
-		}
-		else if(strcmp(token, ":C")==0){
-			doisPontosLetras(s,'C');
-		}
-		else if(strcmp(token, ":D")==0){
-			doisPontosLetras(s,'D');
-		}
-		else if(strcmp(token, ":E")==0){
-			doisPontosLetras(s,'E');
-		}
-		else if(strcmp(token, ":F")==0){
-			doisPontosLetras(s,'F');
-		}
-		else if(strcmp(token, ":G")==0){
-			doisPontosLetras(s,'G');
-		}
-		else if(strcmp(token, ":H")==0){
-			doisPontosLetras(s,'H');
-		}
-		else if(strcmp(token, ":I")==0){
-			doisPontosLetras(s,'I');
-		}
-		else if(strcmp(token, ":J")==0){
-			doisPontosLetras(s,'J');
-		}
-		else if(strcmp(token, ":K")==0){
-			doisPontosLetras(s,'K');
-		}
-		else if(strcmp(token, ":L")==0){
-			doisPontosLetras(s,'L');
-		}
-		else if(strcmp(token, ":M")==0){
-			doisPontosLetras(s,'M');
-		}
-		else if(strcmp(token, ":N")==0){
-			doisPontosLetras(s,'N');
-		}
-		else if(strcmp(token, ":O")==0){
-			doisPontosLetras(s,'O');
-		}
-		else if(strcmp(token, ":P")==0){
-			doisPontosLetras(s,'P');
-		}
-		else if(strcmp(token, ":Q")==0){
-			doisPontosLetras(s,'Q');
-		}
-		else if(strcmp(token, ":R")==0){
-			doisPontosLetras(s,'R');
-		}
-    	else if(strcmp(token, ":S")==0){
-			doisPontosLetras(s,'S');
-		}
-		else if(strcmp(token, ":T")==0){
-			doisPontosLetras(s,'T');
-		}
-		else if(strcmp(token, ":U")==0){
-			doisPontosLetras(s,'U');
-		}
-		else if(strcmp(token, ":V")==0){
-			doisPontosLetras(s,'V');
-		}
-		else if(strcmp(token, ":W")==0){
-			doisPontosLetras(s,'W');
-		}
-		else if(strcmp(token, ":X")==0){
-			doisPontosLetras(s,'X');
-		}
-		else if(strcmp(token, ":Y")==0){
-			doisPontosLetras(s,'Y');
-		}
-		else if(strcmp(token, ":Z")==0){
-			doisPontosLetras(s,'Z');
-		}
 		else{
 /**\brief Foram utilizados switch cases de modo a diminuir a Complexidade Ciclomática.
 */
@@ -246,6 +66,36 @@ void parse(){
 //operações 
 /**Esta linha de código é inicializada aquando da leitura do "trigger" +, e busca a função localizada no ficheiro funcoes que realiza a operação aritmética da soma entre diversos tipos de valores.
 */
+//mesmo bug do abaixo, temos de acrescentar um mas esperar pela resposta do Félix
+				case ('e'):
+					switch(token[1]){
+						case('<'):
+							e_menor(s);
+							break;
+						case('>'):
+							e_maior(s);
+							break;
+						case('&'):
+							e_com_shortcut(s);
+							break;
+						case('|'):
+							ou_com_shortcut(s);
+							break;
+						default:
+							break;
+					}
+				case (':'):
+//rever mafarriquice com o char seguinte
+					switch(token[1]){
+						case('A'):
+							doisPontosLetras(s,'B');
+							break;
+						case('B'):
+							doisPontosLetras(s,'C');
+							break;
+						default:
+							break;
+					}
 				case('('):
 					decrementa(s);
 					break;

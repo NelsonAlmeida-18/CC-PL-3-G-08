@@ -1,7 +1,7 @@
 /**
   *@file Ficheiro                 !!!!!!!!!!!!!!!!!!!!!!           .
   *\brief Neste ficheiro está presente mascáras, estruturas de dados e de stack,bem omo funções utilizadas na stack.
-  *@date April 2021
+  *@date May 2021
   *@returns                    !!!!!!!!!!!!!!!!!!!!!!!!!!
  */
 #ifndef ___STACK_H___
