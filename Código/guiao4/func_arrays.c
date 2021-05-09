@@ -14,6 +14,11 @@ int t(STACK *s){
 	push_STRING(s,line_to_push);
 }
 */
+/**
+  *\brief Função que separa a string por espaços.
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void s_slash(STACK *s){
 	DATA elem = pop(s);
 	char strtoallocate[10240];
@@ -34,8 +39,11 @@ void s_slash(STACK *s){
 	}
 	push_STRING(s,strtoallocate);
 }
-
-
+/**
+  *\brief Função Range(Tamanho).
+  *@param Recebe a STACK como argumento.
+  *@returns Esta função não tem retorno.
+  */
 void virgula(STACK *s){
 	DATA elems = pop(s);
 	if(has_type(elems,LONG)){
